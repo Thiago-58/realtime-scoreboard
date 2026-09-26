@@ -1,0 +1,1081 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Criar estrutura de diretórios e `pom.xml`": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033662735
+      },
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033674613
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033820737
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033831563
+      },
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035340249
+      },
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035597606
+      }
+    ],
+    "1.2 Criar `web.xml`, `persistence.xml` e `beans.xml`": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033663212
+      },
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033675111
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033820901
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033832020
+      },
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035340662
+      },
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035598131
+      }
+    ],
+    "2.1 Criar `StatusPartida.java` e `Partida.java`": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033663396
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033821016
+      },
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035601867
+      },
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035718213
+      }
+    ],
+    "3.1 Criar script de migração Flyway `V1__create_jogos_table.sql`": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033663528
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033821179
+      },
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035727051
+      },
+      {
+        "executionId": "69002287-3f27-4c77-ad38-17654c247cab",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036342200
+      }
+    ],
+    "4.1 Criar todas as classes de DTO com anotações de validação": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033663632
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033821314
+      },
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035727418
+      },
+      {
+        "executionId": "69002287-3f27-4c77-ad38-17654c247cab",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036360588
+      }
+    ],
+    "4.2 Escrever testes de propriedade para `ScoreEvent` (round-trip JSON)": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033663759
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033821429
+      },
+      {
+        "executionId": "69002287-3f27-4c77-ad38-17654c247cab",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036366219
+      },
+      {
+        "executionId": "3fbef6ac-4c3f-4346-a819-bcc48d418f19",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036710607
+      }
+    ],
+    "5.1 Criar as três classes de exceção e `GlobalExceptionMapper`": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033663868
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033821563
+      },
+      {
+        "executionId": "69002287-3f27-4c77-ad38-17654c247cab",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036366517
+      },
+      {
+        "executionId": "3fbef6ac-4c3f-4346-a819-bcc48d418f19",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036711824
+      }
+    ],
+    "6.1 Implementar `PartidaRepository` com todas as queries JPQL": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033663958
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033821686
+      },
+      {
+        "executionId": "3fbef6ac-4c3f-4346-a819-bcc48d418f19",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036715945
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101756614
+      }
+    ],
+    "7.1 Implementar `criarPartida` e `buscarPorId`": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033664049
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033821795
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101511465
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101765039
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790102080271
+      }
+    ],
+    "7.2 Escrever testes de propriedade para criação de partida": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033664143
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033821900
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101512571
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790102087365
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790103018132
+      }
+    ],
+    "7.3 Implementar `atualizarPlacar` com validações de domínio": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033664228
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033821998
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101512844
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790102088179
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790102740281
+      }
+    ],
+    "7.4 Escrever testes de propriedade para atualização de placar": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033664384
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033822234
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101512970
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790103022619
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790103621390
+      }
+    ],
+    "7.5 Implementar `atualizarStatus` e operações de listagem": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033664546
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033822327
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101513088
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790103023801
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790103427343
+      }
+    ],
+    "7.6 Escrever testes de propriedade para transições de status": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033664696
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033822425
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101513185
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790103627102
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104311692
+      }
+    ],
+    "7.7 Escrever testes de propriedade para filtros de listagem": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033664844
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033822563
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101513298
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790103628498
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104311876
+      }
+    ],
+    "8. Checkpoint — Testes unitários da camada de serviço passando": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033664944
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033822657
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101513434
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104334194
+      }
+    ],
+    "9.1 Implementar `ScoreboardApplication` e `JogosResource` com todos os cinco endpoints": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033665036
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033822759
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101513612
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790103629277
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104312529
+      }
+    ],
+    "9.2 Adicionar anotações MicroProfile OpenAPI em todos os endpoints": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033665118
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033822876
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101513717
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104338929
+      },
+      {
+        "executionId": "10e6edf5-d201-45ea-9671-3138ff16d5f4",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104756351
+      },
+      {
+        "executionId": "9c70088a-9e19-449e-8217-0ab72a1fa510",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790198587386
+      }
+    ],
+    "9.3 Implementar `HealthResource` com verificação de dependências": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033665209
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033822978
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101513809
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104339797
+      },
+      {
+        "executionId": "10e6edf5-d201-45ea-9671-3138ff16d5f4",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104757342
+      },
+      {
+        "executionId": "9c70088a-9e19-449e-8217-0ab72a1fa510",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790198967563
+      }
+    ],
+    "9.4 Escrever testes de propriedade para sanitização de entrada": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033665318
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033823068
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101513902
+      }
+    ],
+    "10.1 Criar `RabbitMQConnectionManager` com gestão de ciclo de vida": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033665451
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033823163
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514006
+      },
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104341690
+      },
+      {
+        "executionId": "10e6edf5-d201-45ea-9671-3138ff16d5f4",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104758358
+      },
+      {
+        "executionId": "9c70088a-9e19-449e-8217-0ab72a1fa510",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790199233862
+      }
+    ],
+    "10.2 Criar `RabbitMQPublisher` com serialização Jackson e tratamento de falhas": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033665566
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033823264
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514097
+      }
+    ],
+    "10.3 Criar `ScoreEventConsumer` com ACK/NACK e atualização do Redis": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033665679
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033823367
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514188
+      }
+    ],
+    "10.4 Escrever testes de serialização de `ScoreEvent` (round-trip)": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033665842
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033823493
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514289
+      }
+    ],
+    "11.1 Criar `JedisPoolProducer` e `RedisCache` com CDI": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033665933
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033823630
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514402
+      }
+    ],
+    "11.2 Escrever testes de propriedade para idempotência do cache Redis": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033666051
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033823760
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514506
+      }
+    ],
+    "12. Checkpoint — Testes unitários e de propriedade passando": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033666169
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033823881
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514602
+      }
+    ],
+    "13.1 Criar `WicketApplication` e `HomePage` com formulário de criação": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033666313
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033824002
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514710
+      },
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201323278
+      },
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201426195
+      }
+    ],
+    "13.2 Criar `PartidaListPanel` com `AjaxSelfUpdatingTimerBehavior`": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033666463
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033824131
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514808
+      },
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201439417
+      },
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201552622
+      }
+    ],
+    "13.3 Criar `PartidaRowPanel` com controles condicionais e destaque visual": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033666645
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033824259
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514903
+      },
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201721339
+      },
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790202212500
+      }
+    ],
+    "13.4 Criar templates HTML Wicket e CSS/JS estáticos": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033666819
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033824388
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101514996
+      },
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790202214428
+      }
+    ],
+    "14.1 Implementar testes de integração para criação e consulta de partidas (`POST /jogos`, `GET /jogos`, `GET /jogos/{id}`)": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033667080
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033824517
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101515090
+      },
+      {
+        "executionId": "e4643ac9-fcef-4e6d-8093-02ac55c5e73c",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790210489120
+      }
+    ],
+    "14.2 Implementar testes de integração para atualização de placar e fluxo assíncrono": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033667311
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033824721
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101515240
+      },
+      {
+        "executionId": "afbba279-2179-4e46-9b4a-2c353e6045ce",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790214548775
+      }
+    ],
+    "14.3 Implementar testes de integração para alteração de status": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033667423
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033824898
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101515368
+      },
+      {
+        "executionId": "afbba279-2179-4e46-9b4a-2c353e6045ce",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790214549324
+      }
+    ],
+    "14.4 Implementar teste de health check e validação do documento OpenAPI": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033667514
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033824992
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101515485
+      }
+    ],
+    "15. Checkpoint — Todos os testes passando": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033667667
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033825092
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101515609
+      }
+    ],
+    "16.1 Criar `docker-compose.yml` com todos os serviços e healthchecks": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033667763
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033825192
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101515714
+      }
+    ],
+    "17.1 Criar `README.md` com instruções, variáveis de ambiente e exemplos cURL": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033667864
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033825292
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101515802
+      }
+    ],
+    "18. Checkpoint final — Validação completa do sistema": [
+      {
+        "executionId": "a64cffc0-f6b5-4d76-8f29-41756239f751",
+        "chatSessionId": "sess_e6be07b5-dae5-44ac-8aa0-4e0c48a3e4fc",
+        "timestamp": 1790033667954
+      },
+      {
+        "executionId": "10cc7b1c-b5be-4717-b2c7-f14460915b53",
+        "chatSessionId": "sess_362724a9-98cb-4cfe-a9db-94d12660b06e",
+        "timestamp": 1790033825398
+      },
+      {
+        "executionId": "73e55b54-2f75-4aad-96a0-718a5860207b",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101515893
+      }
+    ],
+    "1. Scaffold do projeto Maven e configuração de dependências": [
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035598269
+      }
+    ],
+    "2. Modelo de domínio e enumerado de status": [
+      {
+        "executionId": "c8ae0627-91f9-4d42-91c3-cf0e4074d14d",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790035718417
+      }
+    ],
+    "3. Migração Flyway e DDL do banco de dados": [
+      {
+        "executionId": "69002287-3f27-4c77-ad38-17654c247cab",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036342379
+      }
+    ],
+    "4. Camada de DTOs (Request/Response/Event)": [
+      {
+        "executionId": "3fbef6ac-4c3f-4346-a819-bcc48d418f19",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036710792
+      }
+    ],
+    "5. Hierarquia de exceções de domínio e `GlobalExceptionMapper`": [
+      {
+        "executionId": "3fbef6ac-4c3f-4346-a819-bcc48d418f19",
+        "chatSessionId": "sess_d2c0d196-3bbb-4256-a7a9-030d78c9842b",
+        "timestamp": 1790036711958
+      }
+    ],
+    "6. Camada de repositório JPA": [
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790101756781
+      }
+    ],
+    "7. Camada de serviço (lógica de negócio)": [
+      {
+        "executionId": "304e6c89-7d45-4213-9081-cce6a995eae5",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790104311990
+      }
+    ],
+    "10.0 Criar `JsonProducer` (producer CDI do `ObjectMapper`) no pacote `config/`": [
+      {
+        "executionId": "9c70088a-9e19-449e-8217-0ab72a1fa510",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790199245773
+      },
+      {
+        "executionId": "7fbf59cc-f553-4c83-940f-a96a93cae3c7",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790199442353
+      },
+      {
+        "executionId": "a0af3e67-4937-4956-baa2-008ac9d18147",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790199532459
+      },
+      {
+        "executionId": "a0af3e67-4937-4956-baa2-008ac9d18147",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790199763130
+      }
+    ],
+    "9.4 Escrever testes JUnit de sanitização e opacidade de erro (R38, R39)": [
+      {
+        "executionId": "a0af3e67-4937-4956-baa2-008ac9d18147",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790199770172
+      },
+      {
+        "executionId": "a39f7fa4-6109-42d8-8c90-1dbe16b1f20c",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790200612218
+      }
+    ],
+    "10.2 Criar `RabbitPublisher` com serialização Jackson e tratamento de falhas": [
+      {
+        "executionId": "a0af3e67-4937-4956-baa2-008ac9d18147",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790199770999
+      },
+      {
+        "executionId": "a39f7fa4-6109-42d8-8c90-1dbe16b1f20c",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790200414193
+      }
+    ],
+    "9. Recursos REST JAX-RS e documentação OpenAPI": [
+      {
+        "executionId": "a39f7fa4-6109-42d8-8c90-1dbe16b1f20c",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790200612545
+      }
+    ],
+    "11.1 Criar `RedisCache` com JedisPool próprio (sem `JedisPoolProducer`)": [
+      {
+        "executionId": "a39f7fa4-6109-42d8-8c90-1dbe16b1f20c",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790200622573
+      },
+      {
+        "executionId": "a39f7fa4-6109-42d8-8c90-1dbe16b1f20c",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790200960608
+      }
+    ],
+    "10.3 Criar `ScoreConsumer` com ACK/NACK e atualização do Redis": [
+      {
+        "executionId": "a39f7fa4-6109-42d8-8c90-1dbe16b1f20c",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790200671323
+      },
+      {
+        "executionId": "a39f7fa4-6109-42d8-8c90-1dbe16b1f20c",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790200961493
+      },
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201293119
+      }
+    ],
+    "10.4 Escrever testes JUnit do publisher e do consumidor (R17, R19, R20, R23)": [
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201301144
+      }
+    ],
+    "10. Integração RabbitMQ (conexão + publisher + consumidor)": [
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201301303
+      }
+    ],
+    "11.2 Escrever testes JUnit do `RedisCache` com Jedis mockado (R20, R21)": [
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201302605
+      }
+    ],
+    "11. Integração Redis (`RedisCache` com JedisPool próprio)": [
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790201302740
+      }
+    ],
+    "13. Interface Web Apache Wicket": [
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790202214607
+      }
+    ],
+    "12. Checkpoint — Testes unitários passando": [
+      {
+        "executionId": "4e509432-3016-4c7e-85e3-56608c7e30a1",
+        "chatSessionId": "sess_0bbc5a66-8bd0-4a9b-aca1-329249fa0208",
+        "timestamp": 1790202233821
+      }
+    ]
+  }
+}
