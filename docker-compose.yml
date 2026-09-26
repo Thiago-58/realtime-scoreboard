@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: sb_user
+      POSTGRES_PASSWORD: sb_password
+      POSTGRES_DB: scoreboard
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sb_user -d scoreboard"]
+      interval: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: sb_mq_user
+      RABBITMQ_DEFAULT_PASS: sb_mq_password
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 5
+
+  payara:
+    image: payara/micro:6.2023.6-jdk17
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target/scoreboard.war:/opt/payara/deployments/ROOT.war
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: sb_user
+      POSTGRES_PASSWORD: sb_password
+      POSTGRES_DB: scoreboard
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_USER: sb_mq_user
+      RABBITMQ_PASS: sb_mq_password
+      RABBITMQ_EXCHANGE: scoreboard.exchange
+      RABBITMQ_QUEUE: scoreboard.queue
+      RABBITMQ_ROUTING_KEY: score.update
+      REDIS_HOST: redis
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
