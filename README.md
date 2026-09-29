@@ -78,11 +78,24 @@ C4Container
 - **Docker & Docker Compose**
 
 ### Passo 1: Gerar o pacote WAR e executar a suíte de testes (21 testes)
-Na pasta raiz do projeto:
-```bash
-mvn clean package
-```
-> **Nota:** É fundamental gerar o pacote antes de subir os contêineres, para que o arquivo `target/scoreboard.war` já exista quando o Docker Compose montar o volume do Payara.
+Na pasta raiz do projeto, execute o Maven. Como o projeto já inclui o **Maven Wrapper (`mvnw`)**, você não precisa ter o Maven instalado globalmente no sistema:
+
+- **No Windows (Command Prompt / CMD):**
+  ```cmd
+  mvnw clean package
+  ```
+- **No PowerShell:**
+  ```powershell
+  .\mvnw clean package
+  ```
+- **Caso tenha o Maven instalado no PATH:**
+  ```bash
+  mvn clean package
+  ```
+- **Ou pelo IntelliJ IDEA:**
+  Na barra lateral direita, abra a aba **Maven** -> expanda **realtime-scoreboard** -> **Lifecycle** -> dê dois cliques em **package**.
+
+> **Nota importante:** É fundamental gerar o pacote antes de subir os contêineres pela primeira vez, para que o arquivo `target/scoreboard.war` já exista quando o Docker Compose montar o volume do Payara.
 
 ### Passo 2: Iniciar os serviços com Docker Compose
 ```bash
