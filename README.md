@@ -74,8 +74,8 @@ C4Container
 
 ### Pré-requisitos
 - **Java JDK 17**
-- **Apache Maven 3.8+**
-- **Docker & Docker Compose**
+- **Apache Maven 3.8+** *(opcional, pois o projeto já inclui o Maven Wrapper `mvnw`)*
+- **Docker Desktop** instalado, **aberto e em execução** no Windows (ícone da baleia verde / "Engine running")
 
 ### Passo 1: Gerar o pacote WAR e executar a suíte de testes (21 testes)
 Na pasta raiz do projeto, execute o Maven. Como o projeto já inclui o **Maven Wrapper (`mvnw`)**, você não precisa ter o Maven instalado globalmente no sistema:
@@ -98,6 +98,9 @@ Na pasta raiz do projeto, execute o Maven. Como o projeto já inclui o **Maven W
 > **Nota importante:** É fundamental gerar o pacote antes de subir os contêineres pela primeira vez, para que o arquivo `target/scoreboard.war` já exista quando o Docker Compose montar o volume do Payara.
 
 ### Passo 2: Iniciar os serviços com Docker Compose
+> ⚠️ **Atenção Windows:** O **Docker Desktop precisa estar aberto** no Windows antes de rodar este comando. Se o Docker Desktop estiver fechado, você receberá o erro `failed to connect to the docker API ... daemon is not running`. Abra o Docker Desktop e aguarde o ícone da baleia ficar verde.
+
+Na pasta onde está o arquivo `docker-compose.yml`, execute:
 ```bash
 docker compose up -d
 ```
