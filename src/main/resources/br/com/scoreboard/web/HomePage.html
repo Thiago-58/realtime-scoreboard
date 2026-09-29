@@ -333,6 +333,17 @@
             transform: translateY(-1px);
         }
 
+        .btn-anular {
+            background-color: #ffffff;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+        .btn-anular:hover {
+            background-color: #fee2e2;
+            border-color: #f87171;
+            transform: translateY(-1px);
+        }
+
         .btn-encerrar-match {
             background-color: #fee2e2;
             color: #991b1b;
@@ -406,6 +417,7 @@
             <a wicket:id="filtroTodos" class="filtro-link">Todos</a>
             <a wicket:id="filtroAndamento" class="filtro-link">Em Andamento</a>
             <a wicket:id="filtroEncerrado" class="filtro-link">Encerrados</a>
+            <a wicket:id="btnSincronizarBanco" class="filtro-link" style="background: rgba(255, 255, 255, 0.35); font-weight: 800; border: 1px solid rgba(255,255,255,0.6);" title="Limpa o cache Redis e recarrega os dados diretamente do banco PostgreSQL">🔄 Sincronizar com Banco</a>
         </div>
     </div>
 
@@ -442,8 +454,10 @@
             <div wicket:id="controlesAndamento" class="match-controls-bar">
                 <span style="font-size: 0.85rem; font-weight: 700; color: #475569;">Ações da Partida:</span>
                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                    <a wicket:id="btnGolA" class="btn-action-pill btn-gol">⚽ +1 Gol Mandante</a>
-                    <a wicket:id="btnGolB" class="btn-action-pill btn-gol">⚽ +1 Gol Visitante</a>
+                    <a wicket:id="btnGolA" class="btn-action-pill btn-gol">⚽ +1 Mandante</a>
+                    <a wicket:id="btnAnularGolA" class="btn-action-pill btn-anular" title="Diminui 1 gol caso tenha lançado por engano">↩️ -1 Mandante</a>
+                    <a wicket:id="btnGolB" class="btn-action-pill btn-gol">⚽ +1 Visitante</a>
+                    <a wicket:id="btnAnularGolB" class="btn-action-pill btn-anular" title="Diminui 1 gol caso tenha lançado por engano">↩️ -1 Visitante</a>
                     <a wicket:id="btnEncerrar" class="btn-action-pill btn-encerrar-match">🏁 Encerrar Partida</a>
                 </div>
             </div>

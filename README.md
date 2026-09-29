@@ -77,8 +77,14 @@ C4Container
 - **Apache Maven 3.8+**
 - **Docker & Docker Compose**
 
-### Passo 1: Iniciar os serviços com Docker Compose
+### Passo 1: Gerar o pacote WAR e executar a suíte de testes (21 testes)
 Na pasta raiz do projeto:
+```bash
+mvn clean package
+```
+> **Nota:** É fundamental gerar o pacote antes de subir os contêineres, para que o arquivo `target/scoreboard.war` já exista quando o Docker Compose montar o volume do Payara.
+
+### Passo 2: Iniciar os serviços com Docker Compose
 ```bash
 docker compose up -d
 ```
@@ -88,14 +94,9 @@ Isso inicializa os 4 contêineres:
 - **Redis** (`:6379`)
 - **Payara Micro** (`:8080`)
 
-### Passo 2: Executar a suíte de testes (21 testes)
+### Passo 3: Reiniciar o Payara após alterações no código (se necessário)
+Após recompilar com `mvn clean package -DskipTests`, basta reiniciar apenas o contêiner do Payara:
 ```bash
-mvn test
-```
-
-### Passo 3: Gerar o pacote WAR e atualizar o Payara
-```bash
-mvn clean package -DskipTests
 docker compose restart payara
 ```
 
