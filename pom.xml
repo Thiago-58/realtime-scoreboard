@@ -17,7 +17,7 @@
 
         <jakarta.version>10.0.0</jakarta.version>
         <wicket.version>10.9.0</wicket.version>
-        <jackson.version>2.17.1</jackson.version>
+        <jackson.version>2.22.1</jackson.version>
     </properties>
 
     <dependencies>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
-            <version>5.21.0</version>
+            <version>5.34.0</version>
         </dependency>
         <dependency>
             <groupId>redis.clients</groupId>
@@ -89,7 +89,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.3</version>
+            <version>42.7.12</version>
         </dependency>
 
         <!-- Testes Unitários e BDD (JUnit 5 + Mockito + AssertJ) -->

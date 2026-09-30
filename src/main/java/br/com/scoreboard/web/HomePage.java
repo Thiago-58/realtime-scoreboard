@@ -6,7 +6,9 @@ import br.com.scoreboard.dto.CriarPartidaRequest;
 import br.com.scoreboard.dto.PartidaResponse;
 import br.com.scoreboard.service.PartidaService;
 import jakarta.enterprise.inject.spi.CDI;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.AjaxSelfUpdatingTimerBehavior;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
@@ -14,7 +16,6 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -38,11 +39,11 @@ import java.util.Optional;
  * Controlador da interface gráfica principal desenvolvida em Apache Wicket 10.
  * 
  * COMO FUNCIONA A ATUALIZAÇÃO EM TEMPO REAL SILENCIOSA:
+ * - Todos os botões de ação usam AjaxLink: não recarregam a página inteira e
+ *   NÃO rolam a tela para o topo, mantendo a posição exata onde o usuário está!
  * - O formulário de criação de jogos fica isolado fora do container de partidas.
  * - O container de partidas possui um timer AJAX (AjaxSelfUpdatingTimerBehavior)
  *   que recarrega apenas a seção de partidas a cada 3 segundos via DOM parcial.
- * - Isso garante que, se o usuário estiver digitando o nome de um time no formulário,
- *   o texto NUNCA é apagado e o foco não é perdido.
  * - Na hora de exibir cada jogo, o sistema consulta primeiro o RedisCacheService.
  *   Se houver dado ao vivo no Redis, exibe com badge '⚡ AO VIVO (Redis)'.
  *   Se o Redis não tiver, exibe '💾 Banco (PostgreSQL)' de forma transparente (Cache-Aside).
@@ -61,7 +62,17 @@ public class HomePage extends WebPage {
 
     public HomePage() {
         // Painel para exibição de mensagens de sucesso ou validação de erro
-        add(new FeedbackPanel("feedback"));
+        final FeedbackPanel feedback = new FeedbackPanel("feedback");
+        feedback.setOutputMarkupId(true);
+        add(feedback);
+
+        // ====================================================================
+        // Container de Partidas com Timer AJAX Silencioso
+        // ====================================================================
+        final WebMarkupContainer containerPartidas = new WebMarkupContainer("containerPartidas");
+        containerPartidas.setOutputMarkupId(true);
+        // Atualiza a cada 3 segundos via AJAX sem recarregar a tela
+        containerPartidas.add(new AjaxSelfUpdatingTimerBehavior(Duration.ofSeconds(3)));
 
         // ====================================================================
         // BLOCO 1: Formulário de Criação de Partida
@@ -131,43 +142,52 @@ public class HomePage extends WebPage {
         add(formCriar);
 
         // ====================================================================
-        // BLOCO 2: Botões / Tabs de Filtro de Status
+        // BLOCO 2: Botões / Tabs de Filtro de Status (via AJAX sem recarregar)
         // ====================================================================
-        add(new Link<Void>("filtroTodos") {
-            private static final long serialVersionUID = 1L;
-            @Override public void onClick() { filtroStatus = "TODOS"; }
-        });
-        add(new Link<Void>("filtroAndamento") {
-            private static final long serialVersionUID = 1L;
-            @Override public void onClick() { filtroStatus = "EM_ANDAMENTO"; }
-        });
-        add(new Link<Void>("filtroEncerrado") {
-            private static final long serialVersionUID = 1L;
-            @Override public void onClick() { filtroStatus = "ENCERRADO"; }
-        });
-
-        // Botão para sincronizar manualmente o cache Redis com alterações manuais no PostgreSQL
-        add(new Link<Void>("btnSincronizarBanco") {
+        add(new AjaxLink<Void>("filtroTodos") {
             private static final long serialVersionUID = 1L;
             @Override
-            public void onClick() {
+            public void onClick(AjaxRequestTarget target) {
+                filtroStatus = "TODOS";
+                target.add(containerPartidas);
+            }
+        });
+        add(new AjaxLink<Void>("filtroAndamento") {
+            private static final long serialVersionUID = 1L;
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                filtroStatus = "EM_ANDAMENTO";
+                target.add(containerPartidas);
+            }
+        });
+        add(new AjaxLink<Void>("filtroEncerrado") {
+            private static final long serialVersionUID = 1L;
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                filtroStatus = "ENCERRADO";
+                target.add(containerPartidas);
+            }
+        });
+
+        // Botão para sincronizar manualmente o cache Redis com alterações manuais no PostgreSQL via AJAX
+        add(new AjaxLink<Void>("btnSincronizarBanco") {
+            private static final long serialVersionUID = 1L;
+            @Override
+            public void onClick(AjaxRequestTarget target) {
                 try {
                     getRedisCache().limparTodos();
                     success("🔄 Cache limpo! A tela agora exibe exatamente os dados gravados no banco PostgreSQL.");
                 } catch (Exception e) {
                     error("Erro ao sincronizar cache: " + e.getMessage());
                 }
+                target.add(containerPartidas);
+                target.add(feedback);
             }
         });
 
         // ====================================================================
-        // BLOCO 3: Container de Partidas com Timer AJAX Silencioso
+        // BLOCO 3: Renderização das Partidas
         // ====================================================================
-        WebMarkupContainer containerPartidas = new WebMarkupContainer("containerPartidas");
-        containerPartidas.setOutputMarkupId(true);
-        // Atualiza a cada 3 segundos via AJAX sem recarregar a tela
-        containerPartidas.add(new AjaxSelfUpdatingTimerBehavior(Duration.ofSeconds(3)));
-
         // LoadableDetachableModel garante que a lista seja reconsultada a cada ciclo AJAX
         IModel<List<PartidaViewModel>> partidasModel = new LoadableDetachableModel<>() {
             private static final long serialVersionUID = 1L;
@@ -216,16 +236,16 @@ public class HomePage extends WebPage {
                 item.add(new Label("origemPlacar", vm.isAoVivo() ? "⚡ AO VIVO (Redis)" : "💾 Banco (PostgreSQL)"));
 
                 // ============================================================
-                // Ações para Jogos EM_ANDAMENTO
+                // Ações para Jogos EM_ANDAMENTO (Botões AJAX: NÃO rolam para o topo)
                 // ============================================================
                 WebMarkupContainer controlesAndamento = new WebMarkupContainer("controlesAndamento");
                 controlesAndamento.setVisible(emAndamento);
 
-                // Botão: +1 Gol Mandante
-                controlesAndamento.add(new Link<Void>("btnGolA") {
+                // Botão: +1 Gol Mandante (AJAX)
+                controlesAndamento.add(new AjaxLink<Void>("btnGolA") {
                     private static final long serialVersionUID = 1L;
                     @Override
-                    public void onClick() {
+                    public void onClick(AjaxRequestTarget target) {
                         try {
                             PartidaResponse atual = getPartidaService().buscarPorId(vm.getId());
                             int novoPlacarA = atual.getPlacarA() + 1;
@@ -234,34 +254,38 @@ public class HomePage extends WebPage {
                         } catch (Exception e) {
                             error("Erro ao adicionar gol: " + e.getMessage());
                         }
+                        target.add(containerPartidas);
+                        target.add(feedback);
                     }
                 });
 
-                // Botão: ↩️ -1 Gol Mandante (Anular / Corrigir)
-                controlesAndamento.add(new Link<Void>("btnAnularGolA") {
+                // Botão: ↩️ -1 Gol Mandante (Anular / Corrigir via AJAX)
+                controlesAndamento.add(new AjaxLink<Void>("btnAnularGolA") {
                     private static final long serialVersionUID = 1L;
                     @Override
-                    public void onClick() {
+                    public void onClick(AjaxRequestTarget target) {
                         try {
                             PartidaResponse atual = getPartidaService().buscarPorId(vm.getId());
                             if (atual.getPlacarA() <= 0) {
                                 warn("O placar do " + atual.getTimeA() + " já está em zero. Não é possível anular.");
-                                return;
+                            } else {
+                                int novoPlacarA = atual.getPlacarA() - 1;
+                                getPartidaService().atualizarPlacar(atual.getId(), novoPlacarA, atual.getPlacarB(), "painel-web");
+                                info("↩️ Placar corrigido para o " + atual.getTimeA() + "! Placar: " + novoPlacarA + " x " + atual.getPlacarB());
                             }
-                            int novoPlacarA = atual.getPlacarA() - 1;
-                            getPartidaService().atualizarPlacar(atual.getId(), novoPlacarA, atual.getPlacarB(), "painel-web");
-                            info("↩️ Placar corrigido para o " + atual.getTimeA() + "! Placar: " + novoPlacarA + " x " + atual.getPlacarB());
                         } catch (Exception e) {
                             error("Erro ao corrigir placar: " + e.getMessage());
                         }
+                        target.add(containerPartidas);
+                        target.add(feedback);
                     }
                 });
 
-                // Botão: +1 Gol Visitante
-                controlesAndamento.add(new Link<Void>("btnGolB") {
+                // Botão: +1 Gol Visitante (AJAX)
+                controlesAndamento.add(new AjaxLink<Void>("btnGolB") {
                     private static final long serialVersionUID = 1L;
                     @Override
-                    public void onClick() {
+                    public void onClick(AjaxRequestTarget target) {
                         try {
                             PartidaResponse atual = getPartidaService().buscarPorId(vm.getId());
                             int novoPlacarB = atual.getPlacarB() + 1;
@@ -270,60 +294,68 @@ public class HomePage extends WebPage {
                         } catch (Exception e) {
                             error("Erro ao adicionar gol: " + e.getMessage());
                         }
+                        target.add(containerPartidas);
+                        target.add(feedback);
                     }
                 });
 
-                // Botão: ↩️ -1 Gol Visitante (Anular / Corrigir)
-                controlesAndamento.add(new Link<Void>("btnAnularGolB") {
+                // Botão: ↩️ -1 Gol Visitante (Anular / Corrigir via AJAX)
+                controlesAndamento.add(new AjaxLink<Void>("btnAnularGolB") {
                     private static final long serialVersionUID = 1L;
                     @Override
-                    public void onClick() {
+                    public void onClick(AjaxRequestTarget target) {
                         try {
                             PartidaResponse atual = getPartidaService().buscarPorId(vm.getId());
                             if (atual.getPlacarB() <= 0) {
                                 warn("O placar do " + atual.getTimeB() + " já está em zero. Não é possível anular.");
-                                return;
+                            } else {
+                                int novoPlacarB = atual.getPlacarB() - 1;
+                                getPartidaService().atualizarPlacar(atual.getId(), atual.getPlacarA(), novoPlacarB, "painel-web");
+                                info("↩️ Placar corrigido para o " + atual.getTimeB() + "! Placar: " + atual.getPlacarA() + " x " + novoPlacarB);
                             }
-                            int novoPlacarB = atual.getPlacarB() - 1;
-                            getPartidaService().atualizarPlacar(atual.getId(), atual.getPlacarA(), novoPlacarB, "painel-web");
-                            info("↩️ Placar corrigido para o " + atual.getTimeB() + "! Placar: " + atual.getPlacarA() + " x " + novoPlacarB);
                         } catch (Exception e) {
                             error("Erro ao corrigir placar: " + e.getMessage());
                         }
+                        target.add(containerPartidas);
+                        target.add(feedback);
                     }
                 });
 
-                // Botão: Encerrar Partida (bloqueia alterações posteriores conforme regra 2.1)
-                controlesAndamento.add(new Link<Void>("btnEncerrar") {
+                // Botão: Encerrar Partida via AJAX
+                controlesAndamento.add(new AjaxLink<Void>("btnEncerrar") {
                     private static final long serialVersionUID = 1L;
                     @Override
-                    public void onClick() {
+                    public void onClick(AjaxRequestTarget target) {
                         try {
                             getPartidaService().atualizarStatus(vm.getId(), StatusPartida.ENCERRADO, "painel-web");
                             info("🏁 Partida entre " + vm.getTimeA() + " e " + vm.getTimeB() + " encerrada.");
                         } catch (Exception e) {
                             error("Erro ao encerrar partida: " + e.getMessage());
                         }
+                        target.add(containerPartidas);
+                        target.add(feedback);
                     }
                 });
                 item.add(controlesAndamento);
 
                 // ============================================================
-                // Ações para Jogos ENCERRADOS (Placar travado + opção de reabrir)
+                // Ações para Jogos ENCERRADOS (via AJAX)
                 // ============================================================
                 WebMarkupContainer controlesEncerrado = new WebMarkupContainer("controlesEncerrado");
                 controlesEncerrado.setVisible(encerrado);
 
-                controlesEncerrado.add(new Link<Void>("btnReabrir") {
+                controlesEncerrado.add(new AjaxLink<Void>("btnReabrir") {
                     private static final long serialVersionUID = 1L;
                     @Override
-                    public void onClick() {
+                    public void onClick(AjaxRequestTarget target) {
                         try {
                             getPartidaService().atualizarStatus(vm.getId(), StatusPartida.EM_ANDAMENTO, "painel-web");
                             info("Partida reaberta para EM_ANDAMENTO.");
                         } catch (Exception e) {
                             error("Erro ao reabrir partida: " + e.getMessage());
                         }
+                        target.add(containerPartidas);
+                        target.add(feedback);
                     }
                 });
                 item.add(controlesEncerrado);
