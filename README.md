@@ -247,3 +247,38 @@ A suíte de testes cobre integralmente os requisitos funcionais, cenários BDD, 
 19. **Deve processar evento ScoreEvent, atualizar Redis e enviar basicAck manual**
 20. **Deve descartar mensagem com payload JSON corrompido com basicNack sem reenfileirar**
 21. **Deve aplicar retry com basicNack (requeue=true) quando Redis estiver temporariamente indisponível**
+
+---
+
+## 🛠️ 8. Decisões Arquiteturais e Troubleshooting (Lições de Estudo)
+
+Durante o desenvolvimento e validação do sistema, desafios técnicos específicos relacionados à integração entre **Apache Wicket 10**, **EclipseLink JPA**, **PostgreSQL** e **Docker** foram identificados e solucionados:
+
+### 8.1. Interface Wicket: Botões de Ação com `Link<Void>` vs `AjaxLink<Void>`
+- **Cenário**: Ao utilizar botões de ação baseados em `AjaxLink`, as requisições assíncronas do Wicket (`/wicket?id-btnGolA...`) falhavam silenciosamente no navegador com o erro `SyntaxError: Unexpected token '<'`.
+- **Causa Raiz**: O Wicket empacotava blocos de script em tags `<evaluate>` contendo cabeçalhos XML parciais. Além disso, havia concorrência entre o clique do usuário e o timer em segundo plano (`AjaxSelfUpdatingTimerBehavior`), gerando conflito no DOM e deixando links em estado inerte (`href="#"`).
+- **Solução Adotada**: Os botões de alteração de estado (`+ Gol`, `- Gol`, `Encerrar`, `Reabrir` e filtros de status) foram configurados como `Link<Void>` padrão do Wicket. Dessa forma:
+  - Os botões geram URLs determinísticas (`<a href="./HomePage.html?...">`), executadas via requisição HTTP direta e confiável sem dependência de parsing AJAX complexo.
+  - A reatividade visual contínua é garantida pelo `AjaxSelfUpdatingTimerBehavior(3s)` associado ao container de placares, que atualiza os dados em segundo plano lendo o cache do Redis.
+
+### 8.2. Rota de Recursos Estáticos do Wicket
+- **Cenário**: Recursos internos do framework (`jquery.js`, `wicket-ajax-jquery.js`) retornavam status HTTP 302 / redirecionamento infinito.
+- **Causa Raiz**: A chamada explícita `mountPage("/wicket", HomePage.class)` no `WicketApplication` interceptava e colidia com o path reservado do Wicket para servir scripts (`/wicket/resource/...`).
+- **Solução Adotada**: Remoção do mapeamento redundante `/wicket` no `WicketApplication`, preservando apenas `mountPage("/HomePage.html", HomePage.class)` e o filtro padrão no `web.xml`.
+
+### 8.3. Persistência de Entidades: `GenerationType.SEQUENCE` vs `IDENTITY` no EclipseLink
+- **Cenário**: Ao cadastrar uma partida, a mensagem publicada no RabbitMQ continha `id: null`, impedindo que os consumidores e o Redis soubessem qual chave atualizar.
+- **Causa Raiz**: O EclipseLink em conjunto com `@Stateless` EJB e transações gerenciadas pelo contêiner (CMT) postergava a resolução do ID com `GenerationType.IDENTITY` até a confirmação final da transação (`commit`), posterior à publicação da mensagem.
+- **Solução Adotada**:
+  - Alteração da chave primária da entidade `Partida` para `GenerationType.SEQUENCE` associada à sequence nativa do PostgreSQL (`jogos_id_seq`).
+  - No `PartidaRepository`, inclusão de consulta explícita da sequence (`SELECT nextval('jogos_id_seq')`), `em.persist(p)` e `em.flush()`, garantindo que o `id` esteja imediatamente preenchido antes do disparo do evento no RabbitMQ e da gravação na auditoria.
+  - Adição da propriedade `<property name="eclipselink.target-database" value="PostgreSQL"/>` no `persistence.xml` para assegurar o dialeto correto.
+
+### 8.4. Alinhamento de Volumes Docker e Deploy
+- **Cenário**: Modificações no código Java não surtiam efeito imediato no contêiner Payara após recompilação.
+- **Causa Raiz**: O contêiner Docker monta o arquivo `target/scoreboard.war`. Caso o build não gere novamente o `.war` ou caso haja duplicidade de diretórios de trabalho, o servidor permanece executando o pacote antigo em cache.
+- **Solução**: Sempre executar a geração do pacote com o Maven Wrapper antes de reiniciar o serviço:
+  ```powershell
+  .\mvnw clean package -DskipTests
+  docker compose restart payara
+  ```

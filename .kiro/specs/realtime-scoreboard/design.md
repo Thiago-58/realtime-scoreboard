@@ -912,12 +912,14 @@ public class WicketApplication extends WebApplication {
     @Override public Class<HomePage> getHomePage() { return HomePage.class; }
     @Override protected void init() {
         super.init();
+        getCspSettings().blocking().disabled();
         getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
+        mountPage("/HomePage.html", HomePage.class);
     }
 }
 ```
 
-Registrado no `web.xml` como `WicketFilter` no path `/wicket/*` — o mesmo path já criado no `web.xml` do projeto. As páginas da interface ficam então sob `/wicket/...`, separadas do prefixo `/api` do JAX-RS. As páginas são abertas: não há login nem sessão autenticada.
+Registrado no `web.xml` como `WicketFilter` no path `/wicket/*` — o mesmo path já criado no `web.xml` do projeto. As páginas da interface ficam então sob `/wicket/...`, separadas do prefixo `/api` do JAX-RS. **Nota importante de roteamento**: não se deve usar `mountPage("/wicket", HomePage.class)`, pois isso colide com o path reservado do Wicket para servir recursos estáticos (`/wicket/resource/...`), gerando redirecionamentos 302 nos scripts JavaScript. As páginas são abertas: não há login nem sessão autenticada.
 
 #### `PartidaListPanel` — listagem com polling de 5 s
 
@@ -1033,7 +1035,9 @@ CSS estático (`src/main/webapp/static/scoreboard.css`):
 })
 public class Partida {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jogos_seq")
+    @SequenceGenerator(name = "jogos_seq", sequenceName = "jogos_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "time_a", nullable = false, length = 100)
@@ -1852,3 +1856,28 @@ Onde `campo(e)` lê o nome do campo do próprio erro do Jackson (`e.getPath()`),
 | `INFO` | Início/fim de criação, atualização de placar e alteração de status (com `id` e duração em ms) — Req 13.7 |
 | `WARN` | Reconexões do RabbitMQ; cada tentativa de reprocessamento por Redis fora (com `id` e backoff); entrada em Modo Degradado da UI |
 | `ERROR` | Falhas de PostgreSQL/RabbitMQ; payload irrecuperável no consumidor — Req 13.8 |
+
+---
+
+## 14. Lições de Implementação e Troubleshooting
+
+Esta seção documenta diagnósticos de problemas de produção em tempo de execução e as decisões arquiteturais tomadas para superá-los:
+
+### 14.1. Convivência de `Link<Void>` e Polling AJAX no Apache Wicket
+- **Problema encontrado**: A utilização de `AjaxLink<Void>` nos botões de pontuação e encerramento gerava erros em tempo de execução no browser (`SyntaxError: Unexpected token '<'`) devido a respostas parciais XML mal-interpretadas durante avaliações dinâmicas de JavaScript, além de conflitos de ciclo de vida com o `AjaxSelfUpdatingTimerBehavior(3s)` que limpa/recarrega o DOM periodicamente.
+- **Solução de arquitetura**:
+  - Os botões de ação na tabela operam como links síncronos padrão (`Link<Void>`), gerando URLs com tokens de componente Wicket determinísticos (`<a href="./HomePage.html?..."`).
+  - O container de partidas mantém o `AjaxSelfUpdatingTimerBehavior` ativo apenas para a leitura periódica do Redis, desacoplando completamente a escrita síncrona do usuário do polling assíncrono de telemetria.
+
+### 14.2. Colisão de Rotas em `WicketApplication`
+- **Problema encontrado**: Scripts de base do Wicket (`wicket-ajax-jquery.js`, `jquery-3.7.1.js`) respondiam HTTP 302 Redirection ou falhavam na entrega.
+- **Causa**: `mountPage("/wicket", HomePage.class)` sobrepunha o namespace reservado pelo `WicketFilter` (`/wicket/resource/...`).
+- **Solução**: Mapeamento exclusivo da página inicial para `mountPage("/HomePage.html", HomePage.class)`, deixando o prefixo de recursos (`/wicket/*`) desimpedido.
+
+### 14.3. Resolução Imediata de ID com EclipseLink e PostgreSQL
+- **Problema encontrado**: No padrão EJB CMT (`@Stateless`), o uso de `GenerationType.IDENTITY` com `em.merge()` adiava a resolução do ID gerado pelo PostgreSQL para o flush/commit final da transação, fazendo com que eventos disparados dentro do método de negócio fossem enviados ao RabbitMQ com campo `id: null`.
+- **Solução**:
+  - Uso de `GenerationType.SEQUENCE` na entidade `Partida` conectado à sequence `jogos_id_seq`.
+  - Fallback explícito no `PartidaRepository` com `SELECT nextval('jogos_id_seq')` seguido de `em.persist(p)` e `em.flush()`, garantindo que o ID exista e esteja presente no DTO de evento antes de qualquer integração externa ou auditoria.
+  - Especificação explícita do dialeto no `persistence.xml`: `<property name="eclipselink.target-database" value="PostgreSQL"/>`.
+

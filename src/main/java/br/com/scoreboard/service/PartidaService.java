@@ -96,7 +96,10 @@ public class PartidaService {
         if (req.getPlacarA() != null) p.setPlacarA(req.getPlacarA());
         if (req.getPlacarB() != null) p.setPlacarB(req.getPlacarB());
 
-        repo.salvar(p);
+        Partida salva = repo.salvar(p);
+        if (salva != null) {
+            p = salva;
+        }
 
         // Registra evento na tabela de auditoria
         try {

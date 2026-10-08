@@ -9,6 +9,7 @@
         <properties>
             <!-- Desativa a criação automática de tabelas pelo JPA para o Flyway cuidar das migrações -->
             <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            <property name="eclipselink.target-database" value="PostgreSQL"/>
         </properties>
     </persistence-unit>
 </persistence>

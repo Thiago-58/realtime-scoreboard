@@ -36,7 +36,21 @@ public class PartidaRepository {
      * Persiste ou atualiza uma partida no PostgreSQL.
      */
     public Partida salvar(Partida p) {
-        return em.merge(p);
+        if (p.getId() == null) {
+            try {
+                Long nextId = ((Number) em.createNativeQuery("SELECT nextval('jogos_id_seq')").getSingleResult()).longValue();
+                p.setId(nextId);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            em.persist(p);
+            em.flush();
+            return p;
+        } else {
+            Partida salva = em.merge(p);
+            em.flush();
+            return salva;
+        }
     }
 
     /**

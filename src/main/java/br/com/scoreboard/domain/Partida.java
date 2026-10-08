@@ -28,7 +28,8 @@ import java.time.LocalDateTime;
 public class Partida {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jogos_seq")
+    @SequenceGenerator(name = "jogos_seq", sequenceName = "jogos_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "time_a", nullable = false, length = 100)
@@ -73,6 +74,10 @@ public class Partida {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTimeA() {

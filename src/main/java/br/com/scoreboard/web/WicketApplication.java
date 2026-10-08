@@ -13,6 +13,5 @@ public class WicketApplication extends WebApplication {
         super.init();
         getCspSettings().blocking().disabled();
         mountPage("/HomePage.html", HomePage.class);
-        mountPage("/wicket", HomePage.class);
     }
 }
