@@ -17,7 +17,7 @@
 
         <jakarta.version>10.0.0</jakarta.version>
         <wicket.version>10.9.0</wicket.version>
-        <jackson.version>2.22.1</jackson.version>
+        <jackson.version>2.15.4</jackson.version>
     </properties>
 
     <dependencies>
@@ -63,7 +63,7 @@
             <version>5.1.3</version>
         </dependency>
 
-        <!-- Jackson (JSON) -->
+        <!-- Jackson (JSON) 2.15.4 compativel com Java 17 / Payara 6 -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>

@@ -34,13 +34,25 @@ services:
       interval: 5s
       retries: 5
 
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      redis:
+        condition: service_healthy
+
   payara:
     image: payara/micro:6.2023.6-jdk17
     ports:
       - "8080:8080"
+      - "5005:5005"
     volumes:
       - ./target/scoreboard.war:/opt/payara/deployments/ROOT.war
     environment:
+      JVM_ARGS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
       POSTGRES_HOST: postgres
       POSTGRES_USER: sb_user
       POSTGRES_PASSWORD: sb_password
